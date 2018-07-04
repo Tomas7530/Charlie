@@ -1,21 +1,44 @@
 import Vue from "vue";
 import Router from "vue-router";
 import Home from "./views/Home.vue";
-import About from "./views/About.vue";
+import Nav from "./views/Nav.vue";
+import Intro from "./views/Intro.vue";
+import Creation from "./views/Creation.vue";
+import Order from "./views/Order.vue";
+import Contact from "./views/Contact.vue";
 
 Vue.use(Router);
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: "/",
       name: "home",
-      component: Home
+      components: {
+        title: Home,
+        nav: Nav
+      }
     },
     {
-      path: "/about",
-      name: "about",
-      component: About
+      path: "/intro",
+      name: "intro",
+      component: Intro
+    },
+    {
+      path: "/creation",
+      name: "creation",
+      component: Creation
+    },
+    {
+      path: "/order",
+      name: "order",
+      component: Order
+    },
+    {
+      path: "/contact",
+      name: "contact",
+      component: Contact
     }
   ]
 });
