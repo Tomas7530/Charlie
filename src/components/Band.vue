@@ -1,6 +1,6 @@
 <template>
-  <div v-bind:style="{background:'url(' + content.background + ')'}" class="background col-md-2 band">
-    <router-link to="/" class="band-close" tag="div">
+  <div :style="{background:'url(' + content.background + ')'}" class="background col-md-2 band">
+    <router-link :to="{ path: content.direction}" class="band-close" tag="div">
       <p class="close-icon vcenter">X</p>
     </router-link>
     <div class="d-flex justify-content-center text-center vcenter band-title">
@@ -14,6 +14,7 @@
 <script>
 
 export default {
+  mode: 'history',
   name: "band",
   props: {
     msg: String
@@ -24,19 +25,28 @@ export default {
       bandData: {
         intro: {
           background: "/images/intro-band.jpg",
-          title: "Charlie"
+          title: "Charlie",
+          direction: "/"
         },
         creation: {
           background: "/images/creation-band.jpg",
-          title: "Créations"
+          title: "Créations",
+          direction: "/"
+        },
+        adults: {
+          background: "/images/creation-band.jpg",
+          title: "Adultes",
+          direction: "/creation"
         },
         order: {
           background: "/images/order-band.jpg",
-          title: "Panier"
+          title: "Panier",
+          direction: "/"
         },
         contact: {
           background: "/images/contact-band.jpg",
-          title: "Contact"
+          title: "Contact",
+          direction: "/"
         }
       }
     }
@@ -47,12 +57,6 @@ export default {
     this.content = this.bandData[route];
 
   }
-	/*,
-	methods: {
-	  close: function(){
-	    
-	  }
-	} */
 };
 </script>
 

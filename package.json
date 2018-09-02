@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "git": "^0.1.5",
+    "heroku": "^7.5.10",
     "vue": "^2.5.16",
     "vue-router": "^3.0.1"
   },

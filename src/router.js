@@ -6,6 +6,7 @@ import Intro from "./views/Intro.vue";
 import Creation from "./views/Creation.vue";
 import Order from "./views/Order.vue";
 import Contact from "./views/Contact.vue";
+import Adults from "./views/Adults.vue";
 
 Vue.use(Router);
 
@@ -39,6 +40,11 @@ export default new Router({
       path: "/contact",
       name: "contact",
       component: Contact
+    },
+    {
+      path: "/adults",
+      name: "adults",
+      component: Adults
     }
   ]
 });

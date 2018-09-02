@@ -1,5 +1,5 @@
 <template>
-    <div class="product d-flex justify-content-center" :value="productData.value">
+    <div class="product" :value="productData.value">
         <div class="text-center">
             <h3 v-if="productData.name" v-html="productData.name">
             </h3>

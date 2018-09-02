@@ -7,10 +7,10 @@
   <div>
     <!-- TITLE -->
     <div class="row d-flex justify-content-center vcenter">
-      <h1 class="text-center pb-3">
+      <h1 class="col-12 text-center pb-3">
         Charlie's Créa
       </h1>
-      <h5 class="text-center">
+      <h5 class=" col-12 text-center">
         Lorem ipsum dolor sit amet,
         <strong>consectetur adipiscing elit</strong>.
       </h5>
