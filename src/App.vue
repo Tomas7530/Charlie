@@ -40,7 +40,10 @@ html {
   overflow-y: auto;
 }
 
-.header-page {
+.header-page,
+.section,
+.card-close,
+.card-close:hover {
   padding-top: 30px;
 }
 
@@ -50,8 +53,9 @@ html {
     height: 50% !important;
   }
 
-  .header-page {
-    padding-top: 75px;
+  .header-page,
+  .section {
+    padding-top: 80px;
   }
 }
 

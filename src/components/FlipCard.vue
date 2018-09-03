@@ -1,23 +1,23 @@
 <template>
-	<!-- <router-link to="/adults"> -->
-	<div class="col-md-4 col-sm-12">
-		<div class="flip-container" :class="cardData.category">
-			<div class="flipper">
-				<div class="front">
-					<h5 class="card-title">Créations {{cardData.name}}</h5>
-				</div>
-				<div class="back" style="background:#f8f8f8;">
-					<div class="back-card" :class="cardData.category" :value="cardData.category">
-						<div class="logo" value="child"></div>
-						<div class="title" value="child">@davidwalshblog</div>
-						<p value="child">Mozilla Web Developer, MooTools &amp; jQuery Consultant, MooTools Core Developer, Javascript Fanatic, CSS Tinkerer, PHP Hacker, and web lover.</p>
-					</div>
-				</div>
+  <div class="col-md-4 col-sm-12">
+    <div class="flip-container" :class="cardData.category">
+      <div class="flipper">
 
-			</div>
-		</div>
-	</div>
-	<!-- </router-link> -->
+        <div class="front">
+          <h5 class="card-title">Créations {{cardData.name}}</h5>
+        </div>
+
+        <div class="back" style="background:#f8f8f8;">
+          <div class="back-card" :class="cardData.category" :value="cardData.category">
+            <div class="logo" value="child"><img :alt="'logo-'+ cardData.category" :src="'/images/cards/card-' + cardData.category+ '.jpg'" /></div>
+            <div class="title" value="child">{{cardData.title}}</div>
+            <p value="child">{{cardData.text}}</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -25,88 +25,16 @@ import Products from "@/components/Products.vue";
 import Vue from 'vue';
 
 export default {
-	name: "flipcard",
-	props: {
-		cardData: {
-			type: Object,
-			default: function () { return {} }
-		}
-	},
-	components: {
-		Products
-	},
-	data() {
-		return {
-			products: [
-				{
-					category: "Adulte",
-					name: "Trousse simple",
-					surname: "trousse-simple",
-					description: "Mauris aliquet magna magna sed nunc rhoncus pharetra.Pellentesque condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia pellentesque lorem ipsumdolor. Nullam et orci eu lorliquet magna magna sed nunc rhoncus pharetra Pellentesque condimentum sem.",
-					price: 50,
-					img: "/images/products/product.jpg",
-					alt: "produit1",
-					option: 2
-				}, {
-					category: "Adulte",
-					name: "Trousse simple",
-					surname: "trousse-simple",
-					description: "Mauris aliquet magna magna sed nunc rhoncus pharetra.Pellentesque condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia pellentesque lorem ipsumdolor. Nullam et orci eu lorliquet magna magna sed nunc rhoncus pharetra Pellentesque condimentum sem.",
-					price: 50,
-					img: "/images/products/product.jpg",
-					alt: "produit1",
-					option: 2
-				}, {
-					category: "Adulte",
-					name: "Trousse simple",
-					surname: "trousse-simple",
-					description: "Mauris aliquet magna magna sed nunc rhoncus pharetra.Pellentesque condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia pellentesque lorem ipsumdolor. Nullam et orci eu lorliquet magna magna sed nunc rhoncus pharetra Pellentesque condimentum sem.",
-					price: 50,
-					img: "/images/products/product.jpg",
-					alt: "produit1",
-					option: 2
-				}, {
-					category: "Adulte",
-					name: "Trousse simple",
-					surname: "trousse-simple",
-					description: "Mauris aliquet magna magna sed nunc rhoncus pharetra.Pellentesque condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia pellentesque lorem ipsumdolor. Nullam et orci eu lorliquet magna magna sed nunc rhoncus pharetra Pellentesque condimentum sem.",
-					price: 50,
-					img: "/images/products/product.jpg",
-					alt: "produit1",
-					option: 2
-				}, {
-					category: "Adulte",
-					name: "Trousse simple",
-					surname: "trousse-simple",
-					description: "Mauris aliquet magna magna sed nunc rhoncus pharetra.Pellentesque condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia pellentesque lorem ipsumdolor. Nullam et orci eu lorliquet magna magna sed nunc rhoncus pharetra Pellentesque condimentum sem.",
-					price: 50,
-					img: "/images/products/product.jpg",
-					alt: "produit1",
-					option: 2
-				}, {
-					category: "Adulte",
-					name: "Trousse simple",
-					surname: "trousse-simple",
-					description: "Mauris aliquet magna magna sed nunc rhoncus pharetra.Pellentesque condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia pellentesque lorem ipsumdolor. Nullam et orci eu lorliquet magna magna sed nunc rhoncus pharetra Pellentesque condimentum sem.",
-					price: 50,
-					img: "/images/products/product.jpg",
-					alt: "produit1",
-					option: 2
-				}
-			]
-		}
-	},
-	methods: {
-		mouseEnter: function () {
-			if (!$('.flip-container').hasClass('active'))
-				$('.flip-container').addClass('hover');
-			return;
-		},
-		mouseLeave: function () {
-			$('.flip-container').removeClass('hover');
-			return;
-		}
-	}
+  name: "flipcard",
+  props: {
+    cardData: {
+      type: Object,
+      default: function () { return {} }
+    }
+  },
+  components: {
+    Products
+  }
 };
 </script>
 
@@ -133,13 +61,15 @@ export default {
 
 .flip-container.hover .back {
   transform: rotateY(0deg);
+  cursor: pointer;
 }
 
 .flip-container,
 .front,
 .back {
   transition: all 0.5s ease;
-  width: 250px;
+  min-width: 250px;
+  width: 18vw;
   height: 350px;
 }
 
@@ -180,11 +110,11 @@ export default {
   padding: 5px 10px;
   border-radius: 4px;
   bottom: 25%;
-  left: 15%;
+  left: 7%;
   position: absolute;
   text-shadow: 0.1em 0.1em 0.05em #333;
   transform: rotate(-20deg);
-  width: 40%;
+  width: 15%;
 }
 
 .back {
@@ -193,10 +123,13 @@ export default {
 }
 
 .back .logo {
-  top: 40px;
-  left: 90px;
-  width: 160px;
-  height: 117px;
+  width: 100%;
+  height: auto;
+}
+
+.back .logo img {
+  width: 100%;
+  border-radius: 4px;
 }
 
 .back .title {
@@ -220,5 +153,3 @@ export default {
   font-size: 18px;
 }
 </style>
-
-

@@ -21,15 +21,15 @@
                         <div class="row d-flex justify-content-around">
 
                             <transition name="zoom-fade">
-                                <div class="category" v-for="(card, index) in cards" :key="index" :value="card.category" v-if="card.open">
+                                <div class="section" v-for="(card, index) in cards" :key="index" :value="card.category" v-if="card.open">
                                     <div class="product-card text-center" style="background:#f8f8f8;">
                                         <div class="card-close" v-on:click="closeCard(card)">
-                                            <p class="close-icon vcenter">X</p>
+                                            <p class="close-icon-section vcenter">XABC123</p>
                                         </div>
                                         <h1 class="product-title">{{card.name}}</h1>
                                         <h3>les créations :</h3>
                                         <div class="row d-flex justify-content-center">
-                                            <Products class="col-lg-6" v-for="(product, index) in products" :key="index" v-bind:productData="product" />
+                                            <Products class="col-lg-6" v-for="(product, index) in products" :key="index" v-bind:productData="product" v-if="card.category == product.category" />
                                         </div>
                                     </div>
                                 </div>
@@ -68,7 +68,9 @@ export default {
             cards: [
                 {
                     category: "adults",
-                    name: "Adultes"
+                    name: "Adultes",
+                    title: "cliquez pour voir les produits",
+                    text: "zdko zedokn egrg epkznnzd zfjnonbap ozknedonz g zkoefokzn mpooaz"
                 }, {
                     category: "kids",
                     name: "Enfants"
@@ -78,11 +80,12 @@ export default {
                 }
             ],
             products: [
+                //ADULTES
                 {
                     category: "adults",
                     name: "Trousse simple",
                     surname: "trousse-simple",
-                    description: "Mauris aliquet magna magna sed nunc rhoncus pharetra.Pellentesque condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia pellentesque lorem ipsumdolor. Nullam et orci eu lorliquet magna magna sed nunc rhoncus pharetra Pellentesque condimentum sem.",
+                    description: "Mauris aliquet magna magna sed nunc rhoncus pharetra.Pellentesque condimentum sem.",
                     price: 50,
                     img: "/images/products/product.jpg",
                     alt: "produit1",
@@ -91,12 +94,15 @@ export default {
                     category: "adults",
                     name: "Trousse simple",
                     surname: "trousse-simple",
-                    description: "Mauris aliquet magna magna sed nunc rhoncus pharetra.Pellentesque condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia pellentesque lorem ipsumdolor. Nullam et orci eu lorliquet magna magna sed nunc rhoncus pharetra Pellentesque condimentum sem.",
+                    description: "Mauris aliquet magna magna sed nunc rhoncus pharetra.Pellentesque condimentum sem.",
                     price: 50,
                     img: "/images/products/product.jpg",
                     alt: "produit1",
                     option: 2
-                }, {
+                },
+
+                //ENFANTS
+                {
                     category: "kids",
                     name: "Trousse simple",
                     surname: "trousse-simple",
@@ -114,7 +120,10 @@ export default {
                     img: "/images/products/product.jpg",
                     alt: "produit1",
                     option: 2
-                }, {
+                },
+
+                //ACCESSOIRES
+                {
                     category: "others",
                     name: "Trousse simple",
                     surname: "trousse-simple",
@@ -167,11 +176,20 @@ export default {
 </script>
 
 <style>
-.category {
+@font-face {
+  font-family: "cocogoose";
+  src: url("/fonts/CodeNewRoman.otf") format("otf"),
+    url("/fonts/CodeNewRoman.woff2") format("woff2"),
+    url("/fonts/CodeNewRoman.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.section {
   position: absolute !important;
-  height: 800px !important;
-  width: 750px !important;
-  background-color: blue;
+  height: auto !important;
+  width: 70vw !important;
+  padding-bottom: 20px;
 }
 
 .flip-card {
@@ -193,10 +211,12 @@ export default {
   transform: scale(0.5);
 }
 
-.close-icon {
+.close-icon-section {
+  font-family: "cocogoose";
+  top: -0.7rem;
+  margin: 0 !important;
   padding: 0 !important;
   transition: all 0.1s ease;
-  font-family: "cocogoose-light";
   font-size: 1.5rem !important;
   font-weight: 100;
   text-shadow: 0.05rem 0.05rem rgba(196, 196, 196, 0.589);
@@ -206,8 +226,8 @@ export default {
   transition: all 0.1s ease;
   text-align: center;
   position: absolute;
-  top: 0.6rem;
-  right: 0.6rem;
+  margin: 0.1rem;
+  right: 0.1rem;
   width: 2.4rem;
   height: 2.4rem;
   border-radius: 1.3rem;
@@ -218,13 +238,34 @@ export default {
   transition: all 0.1s ease;
   background-color: rgba(0, 0, 0, 0.158);
   cursor: pointer;
-  top: 0.66rem;
-  right: 0.66rem;
+  margin: 0.15rem;
   width: 2.3rem;
   height: 2.3rem;
   border-radius: 0.9rem;
 }
+
+@font-face {
+  font-family: "arrows";
+  src: url("/fonts/arrows.ttf") format("ttf"),
+    url("/fonts/arrows.woff2") format("woff2"),
+    url("/fonts/arrows.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "follow_the_arrow";
+  src: url("/fonts/arrows/FollowTheArrow.woff2") format("woff2"),
+    url("/fonts/arrows/FollowTheArrow.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Fabulous";
+  src: url("/fonts/arrows/Fabulous.ttf") format("ttf"),
+    url("/fonts/arrows/Fabulous.otf") format("otf");
+  font-weight: normal;
+  font-style: normal;
+}
 </style>
-
-
-
