@@ -1,19 +1,32 @@
 <template>
-  <div class="commun container-fluid h-100">
-    <div class="row h-100">
-      <transition name="fade">
-        <router-view id="default" class="col-12 h-100" />
-      </transition>
-      <transition name="slide-left">
-        <router-view class="col-md-6 col-12 h-100 title" name="title" />
-      </transition>
-      <transition name="slide-right">
-        <router-view class="col-md-6 col-12 h-100 nav-right" name="nav" />
-      </transition>
-    </div>
-  </div>
+	<div class="commun container-fluid h-100">
+		<div class="row h-100">
+			<transition name="fade">
+				<router-view id="default" class="col-12 h-100" />
+			</transition>
+			<transition name="slide-left">
+				<router-view class="col-md-6 col-12 h-100 title" name="title" />
+			</transition>
+			<transition name="slide-right">
+				<router-view class="col-md-6 col-12 h-100 nav-right" name="nav" />
+			</transition>
+		</div>
+	</div>
 </template>
 
+<script>
+import ProductsList from './ProductsList'
+
+export default {
+
+	created() {
+		this.products = ProductsList.$data.products
+	}
+
+}
+</script>
+
+    
 <style>
 body,
 html {

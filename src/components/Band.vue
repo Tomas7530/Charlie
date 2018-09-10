@@ -33,14 +33,14 @@ export default {
           title: "Créations",
           direction: "/"
         },
-        adults: {
-          background: "/images/creation-band.jpg",
-          title: "Adultes",
-          direction: "/creation"
-        },
         order: {
           background: "/images/order-band.jpg",
           title: "Panier",
+          direction: "/"
+        },
+        custom: {
+          background: "/images/order-band.jpg",
+          title: "Personnaliser",
           direction: "/"
         },
         contact: {

@@ -6,7 +6,7 @@ import Intro from "./views/Intro.vue";
 import Creation from "./views/Creation.vue";
 import Order from "./views/Order.vue";
 import Contact from "./views/Contact.vue";
-import Adults from "./views/Adults.vue";
+import Custom from "./views/Custom.vue";
 
 Vue.use(Router);
 
@@ -42,9 +42,9 @@ export default new Router({
       component: Contact
     },
     {
-      path: "/adults",
-      name: "adults",
-      component: Adults
+      path: "/custom",
+      name: "custom",
+      component: Custom
     }
   ]
 });

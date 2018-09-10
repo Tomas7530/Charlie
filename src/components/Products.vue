@@ -1,14 +1,14 @@
 <template>
-    <div class="product" :value="productData.value">
+    <div class="product">
         <div class="text-center">
-            <h3 v-if="productData.name" v-html="productData.name">
+            <h3 v-if="product.name" v-html="product.name">
             </h3>
-            <img :src="productData.img" :alt="productData.alt" />
+            <img :src="product.img" :alt="product.alt" />
             <p>
-                {{productData.description}}
+                {{product.description}}
             </p>
 
-            <router-link to="/order" class="creation link col-6" tag="button">
+            <router-link to="/custom" class="creation link col-6" tag="button">
                 Personnaliser
             </router-link>
 
@@ -20,10 +20,7 @@
 export default {
     name: "products",
     props: {
-        productData: {
-            type: Object,
-            default: function () { return {} }
-        }
+        product: Object
     }
 };
 </script>

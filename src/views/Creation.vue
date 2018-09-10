@@ -6,6 +6,7 @@
                 <div class="row d-flex justify-content-center">
 
                     <HeaderPage class="header-page" v-if="!opened" />
+                    <p></p>
 
                     <!-- Flip card -->
                     <div class="col-12">
@@ -24,12 +25,12 @@
                                 <div class="section" v-for="(card, index) in cards" :key="index" :value="card.category" v-if="card.open">
                                     <div class="product-card text-center" style="background:#f8f8f8;">
                                         <div class="card-close" v-on:click="closeCard(card)">
-                                            <p class="close-icon-section vcenter">XABC123</p>
+                                            <p class="close-icon-section vcenter">X</p>
                                         </div>
                                         <h1 class="product-title">{{card.name}}</h1>
                                         <h3>les créations :</h3>
                                         <div class="row d-flex justify-content-center">
-                                            <Products class="col-lg-6" v-for="(product, index) in products" :key="index" v-bind:productData="product" v-if="card.category == product.category" />
+                                            <Products class="col-lg-6" v-for="(product, index) in products" :key="index" v-if="card.category == product.category" v-bind:product="product" />
                                         </div>
                                     </div>
                                 </div>
@@ -53,6 +54,7 @@ import HeaderPage from "@/components/HeaderPage.vue";
 import FlipCard from "@/components/FlipCard.vue";
 import Products from "@/components/Products.vue";
 import Vue from 'vue';
+import ProductsList from "../ProductsList";
 
 export default {
     name: "creation",
@@ -67,84 +69,25 @@ export default {
             opened: null,
             cards: [
                 {
+                    category: "kids",
+                    name: "Enfants"
+                }, {
                     category: "adults",
                     name: "Adultes",
                     title: "cliquez pour voir les produits",
                     text: "zdko zedokn egrg epkznnzd zfjnonbap ozknedonz g zkoefokzn mpooaz"
                 }, {
-                    category: "kids",
-                    name: "Enfants"
+                    category: "plush",
+                    name: "Peluches"
                 }, {
                     category: "others",
                     name: "Accessoires"
-                }
-            ],
-            products: [
-                //ADULTES
-                {
-                    category: "adults",
-                    name: "Trousse simple",
-                    surname: "trousse-simple",
-                    description: "Mauris aliquet magna magna sed nunc rhoncus pharetra.Pellentesque condimentum sem.",
-                    price: 50,
-                    img: "/images/products/product.jpg",
-                    alt: "produit1",
-                    option: 2
-                }, {
-                    category: "adults",
-                    name: "Trousse simple",
-                    surname: "trousse-simple",
-                    description: "Mauris aliquet magna magna sed nunc rhoncus pharetra.Pellentesque condimentum sem.",
-                    price: 50,
-                    img: "/images/products/product.jpg",
-                    alt: "produit1",
-                    option: 2
-                },
-
-                //ENFANTS
-                {
-                    category: "kids",
-                    name: "Trousse simple",
-                    surname: "trousse-simple",
-                    description: "Mauris aliquet magna magna sed nunc rhoncus pharetra.Pellentesque condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia pellentesque lorem ipsumdolor. Nullam et orci eu lorliquet magna magna sed nunc rhoncus pharetra Pellentesque condimentum sem.",
-                    price: 50,
-                    img: "/images/products/product.jpg",
-                    alt: "produit1",
-                    option: 2
-                }, {
-                    category: "kids",
-                    name: "Trousse simple",
-                    surname: "trousse-simple",
-                    description: "Mauris aliquet magna magna sed nunc rhoncus pharetra.Pellentesque condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia pellentesque lorem ipsumdolor. Nullam et orci eu lorliquet magna magna sed nunc rhoncus pharetra Pellentesque condimentum sem.",
-                    price: 50,
-                    img: "/images/products/product.jpg",
-                    alt: "produit1",
-                    option: 2
-                },
-
-                //ACCESSOIRES
-                {
-                    category: "others",
-                    name: "Trousse simple",
-                    surname: "trousse-simple",
-                    description: "Mauris aliquet magna magna sed nunc rhoncus pharetra.Pellentesque condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia pellentesque lorem ipsumdolor. Nullam et orci eu lorliquet magna magna sed nunc rhoncus pharetra Pellentesque condimentum sem.",
-                    price: 50,
-                    img: "/images/products/product.jpg",
-                    alt: "produit1",
-                    option: 2
-                }, {
-                    category: "others",
-                    name: "Trousse simple",
-                    surname: "trousse-simple",
-                    description: "Mauris aliquet magna magna sed nunc rhoncus pharetra.Pellentesque condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia pellentesque lorem ipsumdolor. Nullam et orci eu lorliquet magna magna sed nunc rhoncus pharetra Pellentesque condimentum sem.",
-                    price: 50,
-                    img: "/images/products/product.jpg",
-                    alt: "produit1",
-                    option: 2
-                }
-            ]
-
+                }]
         }
+    },
+    created() {
+        this.products = ProductsList.$data.products
+        /* Pour modif : panierProductCopy = JSON.parse(JSON.stringify(product)) */
     },
     methods: {
         mouseEnter: function (event) {
@@ -176,15 +119,6 @@ export default {
 </script>
 
 <style>
-@font-face {
-  font-family: "cocogoose";
-  src: url("/fonts/CodeNewRoman.otf") format("otf"),
-    url("/fonts/CodeNewRoman.woff2") format("woff2"),
-    url("/fonts/CodeNewRoman.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-}
-
 .section {
   position: absolute !important;
   height: auto !important;
@@ -212,7 +146,7 @@ export default {
 }
 
 .close-icon-section {
-  font-family: "cocogoose";
+  font-family: "cocogoose-light";
   top: -0.7rem;
   margin: 0 !important;
   padding: 0 !important;
@@ -242,30 +176,5 @@ export default {
   width: 2.3rem;
   height: 2.3rem;
   border-radius: 0.9rem;
-}
-
-@font-face {
-  font-family: "arrows";
-  src: url("/fonts/arrows.ttf") format("ttf"),
-    url("/fonts/arrows.woff2") format("woff2"),
-    url("/fonts/arrows.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "follow_the_arrow";
-  src: url("/fonts/arrows/FollowTheArrow.woff2") format("woff2"),
-    url("/fonts/arrows/FollowTheArrow.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Fabulous";
-  src: url("/fonts/arrows/Fabulous.ttf") format("ttf"),
-    url("/fonts/arrows/Fabulous.otf") format("otf");
-  font-weight: normal;
-  font-style: normal;
 }
 </style>
