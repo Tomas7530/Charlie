@@ -1,9 +1,11 @@
 <template>
 	<div class="header-page col-8 text-center">
 		<div class="row d-flex justify-content-center">
-			<h1 class="pb-4">
+			<!--
+            <h1 class="pb-4">
 				{{content.title}}
 			</h1>
+            -->
 			<span class="image col-12">
 				<img alt="Image Preview" :src="'/images/header/' + content.image" />
 			</span>

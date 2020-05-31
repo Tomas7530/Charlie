@@ -1,7 +1,8 @@
 <template>
   <div :style="{background:'url(' + content.background + ')'}" class="background col-md-2 band">
     <router-link :to="{ path: content.direction}" class="band-close" tag="div">
-      <p class="close-icon vcenter">X</p>
+      <!--<p class="close-icon vcenter">X</p>-->
+      <p class="fas fa-arrow-left vcenter"></p>
     </router-link>
     <div class="d-flex justify-content-center text-center vcenter band-title">
       <h1 class="text-center">
@@ -70,7 +71,7 @@ export default {
 .close-icon {
   transition: all 0.1s ease;
   font-family: "cocogoose-light";
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: 100;
   text-shadow: 0.05rem 0.05rem rgba(196, 196, 196, 0.589);
 }
@@ -100,23 +101,24 @@ export default {
   transition: all 0.1s ease;
   text-align: center;
   position: absolute;
-  top: 0.6rem;
-  right: 0.6rem;
-  width: 2.4rem;
+  font-size: 2rem;
+  top: 2rem;
+  left: 1rem;
+  /*width: 2.4rem;
   height: 2.4rem;
-  border-radius: 1.3rem;
-  border: 0.1rem inset rgb(43, 43, 43);
+ /* border-radius: 1.3rem;
+  border: 0.1rem inset rgb(43, 43, 43);*/
 }
 
 .band-close:hover {
   transition: all 0.1s ease;
-  background-color: rgba(0, 0, 0, 0.158);
   cursor: pointer;
-  top: 0.66rem;
-  right: 0.66rem;
-  width: 2.3rem;
-  height: 2.3rem;
-  border-radius: 0.9rem;
+  font-size: 2.2rem;
+  left: 1.2rem;
+}
+
+.band-close:active {
+    left: 0.8rem;
 }
 
 @media (max-width: 1599.98px) {
