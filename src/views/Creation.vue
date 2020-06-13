@@ -54,12 +54,10 @@ import HeaderPage from "@/components/HeaderPage.vue";
 import FlipCard from "@/components/FlipCard.vue";
 import Products from "@/components/Products.vue";
 import Vue from 'vue';
-import ProductsList from "../ProductsList";
 import store from "../store";
 
 export default {
     name: "creation",
-    store:ProductsList,
     components: {
         Band,
         HeaderPage,
@@ -92,7 +90,8 @@ export default {
         }
     },
     created() {
-        this.products = ProductsList.$data.products
+        this.products = store.state.products
+        //ProductsList.$data.products
         /* Pour modif : panierProductCopy = JSON.parse(JSON.stringify(product)) */
     },
     methods: {
@@ -102,8 +101,6 @@ export default {
 
             if (!$('.flip-container').hasClass('active'))
                 $('.' + value).addClass('hover');
-            store.commit('select',5);
-            console.log(store.state.select);
             return;
             
         },
@@ -114,9 +111,7 @@ export default {
         mouseEnterProd: function (event) {
             var element = event.target,
                 value = element.getAttribute('value');
-                
-            console.log(element);
-            console.log(value);
+        
             if (!$('.flip-container').hasClass('active'))
                 $('.' + value).addClass('hover');
             return;
@@ -144,6 +139,7 @@ export default {
 </script>
 
 <style>
+
 .section {
   position: absolute !important;
   height: auto !important;

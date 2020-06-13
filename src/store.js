@@ -3,8 +3,6 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-const product = this.state.products
-const selected = this.state.select
 const products = [
             //ADULTES
             {
@@ -29,15 +27,6 @@ const products = [
                 category: "adults",
                 name: "Trousse berlingot",
                 nickname: "trousse-berlingot",
-                description: "Mauris aliquet magna magna sed nunc rhoncus pharetra.Pellentesque condimentum sem.",
-                price: 50,
-                img: "/images/products/product.jpg",
-                alt: "produit1",
-                option: 2
-            }, {
-                category: "adults",
-                name: "Trousse de toilette",
-                nickname: "trousse-toilette",
                 description: "Mauris aliquet magna magna sed nunc rhoncus pharetra.Pellentesque condimentum sem.",
                 price: 50,
                 img: "/images/products/product.jpg",
@@ -233,7 +222,7 @@ const products = [
             {
                 category: "others",
                 name: "Trousse simple",
-                nickname: "trousse-simple",
+                nickname: "trousse-1",
                 description: "Mauris aliquet magna magna sed nunc rhoncus pharetra.Pellentesque condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia pellentesque lorem ipsumdolor. Nullam et orci eu lorliquet magna magna sed nunc rhoncus pharetra Pellentesque condimentum sem.",
                 price: 50,
                 img: "/images/products/product.jpg",
@@ -242,7 +231,7 @@ const products = [
             }, {
                 category: "others",
                 name: "Trousse simple",
-                nickname: "trousse-simple",
+                nickname: "trousse-2",
                 description: "Mauris aliquet magna magna sed nunc rhoncus pharetra.Pellentesque condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia pellentesque lorem ipsumdolor. Nullam et orci eu lorliquet magna magna sed nunc rhoncus pharetra Pellentesque condimentum sem.",
                 price: 50,
                 img: "/images/products/product.jpg",
@@ -254,21 +243,30 @@ const products = [
 let store = new Vuex.Store({
     state: {
         products: products, 
-        select: []
+        select: [],
+        category: [],
+        name: []
     },
     mutations: {
-        select (state, n){
-            selected.pop()
-            selected.push(product[n])
-        },
-        getCategory (){
+        getProduct (){
+            var state = this.state,
+                name = state.name,
+                select = state.select
             
+            for(const product in products) {
+                if(products[product].nickname === name){
+                select.pop()
+                select.push(products[product])
+                }
+            }
+            return
         }
     },
     actions: {
 
     }
 })
+
 
 global.store = store
 

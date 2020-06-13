@@ -1,6 +1,6 @@
 <template>
-    <div class="product">
-        <div class="text-center" :class="product.category" :value="products.category">
+    <div class="product" :id="product.nickname">
+        <div class="text-center" :class="product.category" :value="product.category" >
             <h3 v-if="product.name" v-html="product.name">
             </h3>
             <img :src="product.img" :alt="product.alt" />
@@ -9,7 +9,7 @@
             </p>
 
             <router-link to="/custom" class="creation link col-6" tag="button">
-                Personnaliser
+                <h4 :value="product.nickname" v-on:click="custom($event)">Personnaliser</h4>
             </router-link>
 
         </div>
@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import ProductsList from "../ProductsList";
+import store from "../store";
 
 export default {
     name: "products",
@@ -25,7 +25,15 @@ export default {
         product: Object
     },
     created() {
-        this.products = ProductsList.$data.products
+        this.products = store.state.products
+    },
+    methods: {
+        custom: function (event) {
+            var element = event.target,
+                value = element.getAttribute('value')
+            store.state.name = value
+            store.commit('getProduct')
+        }
     }
 };
 </script>
@@ -42,6 +50,7 @@ img {
 
 .product {
   padding-bottom: 20px;
+  z-index: 1;
 }
 
 button {

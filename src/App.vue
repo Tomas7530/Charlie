@@ -58,7 +58,7 @@ html {
 .section,
 .card-close,
 .card-close:hover {
-  padding-top: 30px;
+  padding-top: 30;
 }
 
 @media (max-width: 767.98px) {
