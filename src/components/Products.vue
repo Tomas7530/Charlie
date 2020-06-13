@@ -1,6 +1,6 @@
 <template>
     <div class="product">
-        <div class="text-center">
+        <div class="text-center" :class="product.category" :value="products.category">
             <h3 v-if="product.name" v-html="product.name">
             </h3>
             <img :src="product.img" :alt="product.alt" />
@@ -17,10 +17,15 @@
 </template>
 
 <script>
+import ProductsList from "../ProductsList";
+
 export default {
     name: "products",
     props: {
         product: Object
+    },
+    created() {
+        this.products = ProductsList.$data.products
     }
 };
 </script>

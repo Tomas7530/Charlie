@@ -11,7 +11,7 @@
                     <!-- Flip card -->
                     <div class="col-12">
                         <div class="row d-flex justify-content-around">
-                            <div v-on:mouseenter="mouseEnter($event)" v-on:mouseleave="mouseLeave()" v-on:click="goToProducts(card)" v-for="(card, index) in cards" :key="index" :value="card.category" v-if="!opened">
+                            <div v-on:mouseenter="mouseEnterCard($event)" v-on:mouseleave="mouseLeaveCard()" v-on:click="goToProducts(card)" v-for="(card, index) in cards" :key="index" :value="card.category" v-if="!opened">
                                 <FlipCard class="flip-card row" v-bind:cardData="card" />
                             </div>
                         </div>
@@ -29,7 +29,7 @@
                                         </div>
                                         <h1 class="product-title">{{card.name}}</h1>
                                         <h3>les créations :</h3>
-                                        <div class="row d-flex justify-content-center">
+                                        <div class="row d-flex justify-content-center" v-on:mouseenter="mouseEnterProd($event)">
                                             <Products class="col-lg-6" v-for="(product, index) in products" :key="index" v-if="card.category == product.category" v-bind:product="product" />
                                         </div>
                                     </div>
@@ -55,14 +55,20 @@ import FlipCard from "@/components/FlipCard.vue";
 import Products from "@/components/Products.vue";
 import Vue from 'vue';
 import ProductsList from "../ProductsList";
+import store from "../store";
 
 export default {
     name: "creation",
+    store:ProductsList,
     components: {
         Band,
         HeaderPage,
         FlipCard,
-        Products
+        Products,
+        store
+    },
+    props: {
+        product: Object
     },
     data() {
         return {
@@ -90,14 +96,32 @@ export default {
         /* Pour modif : panierProductCopy = JSON.parse(JSON.stringify(product)) */
     },
     methods: {
-        mouseEnter: function (event) {
+        mouseEnterCard: function (event) {
             var element = event.target,
                 value = element.getAttribute('value');
+
+            if (!$('.flip-container').hasClass('active'))
+                $('.' + value).addClass('hover');
+            store.commit('select',5);
+            console.log(store.state.select);
+            return;
+            
+        },
+        mouseLeaveCard: function () {
+            $('.flip-container').removeClass('hover');
+            return;
+        },
+        mouseEnterProd: function (event) {
+            var element = event.target,
+                value = element.getAttribute('value');
+                
+            console.log(element);
+            console.log(value);
             if (!$('.flip-container').hasClass('active'))
                 $('.' + value).addClass('hover');
             return;
         },
-        mouseLeave: function () {
+        mouseLeaveProd: function () {
             $('.flip-container').removeClass('hover');
             return;
         },
@@ -116,6 +140,7 @@ export default {
         }
     }
 };
+
 </script>
 
 <style>
@@ -145,36 +170,24 @@ export default {
   transform: scale(0.5);
 }
 
-.close-icon-section {
-  font-family: "cocogoose-light";
-  top: -0.7rem;
-  margin: 0 !important;
-  padding: 0 !important;
-  transition: all 0.1s ease;
-  font-size: 1.5rem !important;
-  font-weight: 100;
-  text-shadow: 0.05rem 0.05rem rgba(196, 196, 196, 0.589);
-}
-
 .card-close {
   transition: all 0.1s ease;
   text-align: center;
   position: absolute;
-  margin: 0.1rem;
-  right: 0.1rem;
-  width: 2.4rem;
-  height: 2.4rem;
-  border-radius: 1.3rem;
-  border: 0.1rem inset rgb(43, 43, 43);
+  font-size: 1.8rem;
+  top: 2rem;
+  left: 1rem;
 }
 
 .card-close:hover {
   transition: all 0.1s ease;
-  background-color: rgba(0, 0, 0, 0.158);
   cursor: pointer;
-  margin: 0.15rem;
-  width: 2.3rem;
-  height: 2.3rem;
-  border-radius: 0.9rem;
+  font-size: 2rem;
+  left: 1.2rem;
 }
+
+.card-close:active {
+    left: 0.8rem;
+}
+
 </style>

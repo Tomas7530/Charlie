@@ -21,11 +21,13 @@
 </template>
 
 <script>
-import Products from "@/components/Products.vue";
 import Vue from 'vue';
+import Products from "@/components/Products.vue";
+import ProductsList from "../ProductsList";
 
 export default {
   name: "flipcard",
+  store: ProductsList,
   props: {
     cardData: {
       type: Object,

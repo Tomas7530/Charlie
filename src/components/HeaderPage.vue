@@ -7,7 +7,7 @@
 			</h1>
             -->
 			<span class="image col-12">
-				<img alt="Image Preview" :src="'/images/header/' + content.image" />
+				<img v-if="content.image" alt="Image Preview" :src="'/images/header/' + content.image" />
 			</span>
 			<p v-if="content.text" v-html="content.text">
 			</p>
@@ -28,7 +28,6 @@ export default {
 					text: "Lorem ipsum dolor sit amet,<strong>consectetur adipiscing elit</strong><em>Morbi commodo sodales nisi id sodales. Proin consectetur, nisi id commodo imperdiet, metus nunc consequat lectus, id bibendum diam velit et dui.</em><small>Aliquam mi erat, aliquam vel luctus eu, pharetra quis elit. Nulla euismod ult</small>"
 				},
 				creation: {
-					image: "creation.jpg",
 					text: "<h1>Categories :</h1>"
 				},
 				order: {

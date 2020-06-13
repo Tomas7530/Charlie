@@ -15,13 +15,14 @@
 </template>
 
 <script>
-import ProductsList from './ProductsList'
+import ProductsList from './ProductsList';
 
 export default {
+    store: ProductsList,
 
 	created() {
 		this.products = ProductsList.$data.products
-	}
+    }
 
 }
 </script>
