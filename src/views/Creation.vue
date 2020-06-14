@@ -23,14 +23,14 @@
 
                             <transition name="zoom-fade">
                                 <div class="section" v-for="(card, index) in cards" :key="index" :value="card.category" v-if="card.open">
-                                    <div class="product-card text-center" style="background:#f8f8f8;">
+                                    <div class="product-card text-center" style="background:#11ffee00;">
                                         <div class="card-close" v-on:click="closeCard(card)">
-                                            <p class="close-icon-section vcenter">X</p>
+                                            <p class="fas fa-arrow-left vcenter"></p>
                                         </div>
                                         <h1 class="product-title">{{card.name}}</h1>
                                         <h3>les créations :</h3>
                                         <div class="row d-flex justify-content-center" v-on:mouseenter="mouseEnterProd($event)">
-                                            <Products class="col-lg-6" v-for="(product, index) in products" :key="index" v-if="card.category == product.category" v-bind:product="product" />
+                                            <Products class="col-lg-5" v-for="(product, index) in products" :key="index" v-if="card.category == product.category" v-bind:product="product" />
                                         </div>
                                     </div>
                                 </div>
@@ -53,6 +53,7 @@ import Band from "@/components/Band.vue";
 import HeaderPage from "@/components/HeaderPage.vue";
 import FlipCard from "@/components/FlipCard.vue";
 import Products from "@/components/Products.vue";
+import Custom from "@/views/Custom.vue";
 import Vue from 'vue';
 import store from "../store";
 
@@ -63,6 +64,7 @@ export default {
         HeaderPage,
         FlipCard,
         Products,
+        Custom,
         store
     },
     props: {
@@ -170,7 +172,7 @@ export default {
   transition: all 0.1s ease;
   text-align: center;
   position: absolute;
-  font-size: 1.8rem;
+  font-size: 2rem;
   top: 2rem;
   left: 1rem;
 }
@@ -178,7 +180,6 @@ export default {
 .card-close:hover {
   transition: all 0.1s ease;
   cursor: pointer;
-  font-size: 2rem;
   left: 1.2rem;
 }
 

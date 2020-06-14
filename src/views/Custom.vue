@@ -13,11 +13,11 @@
                     <!--CATEGORY-->
                     <div class="select-wrap">
                         <label for="category-wrap">Catégorie</label>
-                        <div class="">
-                            <select name="category" class="wrapper">
+                        <div id="sel-categ">
+                            <select id="category" class="wrapper category" v-model="selected">
                                 <option value="aucun">-</option>
-                                <option value="kids">Enfant</option>
-                                <option value="adults">Adulte</option>
+                                <option value="adults">Adultes</option>
+                                <option value="kids">Enfants</option>
                                 <option value="plush">Peluches</option>
                                 <option value="others">Accessoires</option>
                             </select>
@@ -27,10 +27,10 @@
                     <!--MODEL-->
                     <div class="select-wrap">
                         <label for="category-wrap">Catégorie</label>
-                        <div class="">
-                            <select name="category" class="wrapper">
+                        <div id="">
+                            <select id="product" class="wrapper" >
                                 <option value="aucun">-</option>
-                                <option value="kids"></option>
+                                <option v-for="(product, index) in products" :key="index" :value="product.nickname" v-show="product.category === category[0]">{{product.name}}</option>
                             </select>
                         </div>
                     </div>
@@ -43,25 +43,56 @@
 
 <script>
 // @ is an alias to /src
+import Vue from 'vue';
 import Band from "@/components/Band.vue";
 import HeaderPage from "@/components/HeaderPage.vue";
-import Products from "@/components/Products.vue";
 import store from "../store";
+    
 
 export default {
     name: "custom",
-    props: {
-        product: Object
-    },
     components: {
         Band,
         HeaderPage,
-        Products
+        store
     },
-    created() {
+    props: {
+    },
+    data() {
+        return {
+            products: [],
+            select: [],
+            category: [],
+            name: [],
+            selected: []
+        }
+    },
+    created () {
         this.products = store.state.products
+        this.select = store.state.select
+        this.category = store.state.category
+        this.selected = this.category
+        this.selectOptionCateg()
+        this.selectOptionProd()
+    },
+    methods: {
+        selectOptionCateg() {
+            setTimeout(function () {
+                $('#category option[class="selected"]').prop('selected', false)
+                $('#category option[value='+ store.state.category[0] +']').prop('selected', true)
+            }
+            ,1000)
+        },
+        selectOptionProd() {
+            setTimeout(function () {
+                $('#product option[class="selected"]').prop('selected', false)
+                $('#product option[value='+ store.state.name +']').prop('selected', true)
+            }
+            ,1000)
+        }
     }
 };
+
 
 </script>
 

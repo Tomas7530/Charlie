@@ -113,7 +113,6 @@ export default {
 .band-close:hover {
   transition: all 0.1s ease;
   cursor: pointer;
-  font-size: 2.2rem;
   left: 1.2rem;
 }
 
