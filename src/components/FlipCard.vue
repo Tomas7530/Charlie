@@ -9,7 +9,7 @@
 
         <div class="back">
           <div class="back-card" :class="cardData.category" :value="cardData.category">
-            <div class="logo" value="child"><img :src="'../' +cardData.image" :alt="'logo-'+ cardData.category" /></div>
+            <div class="logo" value="child"><img :src="'../assets/' +cardData.image" :alt="'logo-'+ cardData.category" /></div>
             <div class="title" value="child">{{cardData.title}}</div>
             <p value="child">{{cardData.text}}</p>
           </div>
@@ -30,7 +30,6 @@ export default {
   components: {
     Products
   },
-  store: ProductsList,
   props: {
     cardData: {
       type: Object,
