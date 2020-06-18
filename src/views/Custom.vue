@@ -9,12 +9,13 @@
                 -->
 
                 <div class="row d-flex justify-content-center">
+                    <p class="col-12">{{selectedCateg}} {{selectedProd}}</p>
 
                     <!--CATEGORY-->
-                    <div class="select-wrap">
+                    <div class="select-wrap col-7">
                         <label for="category-wrap">Catégorie</label>
                         <div id="sel-categ">
-                            <select id="category" class="wrapper category" v-model="selected">
+                            <select id="category" class="wrapper category" v-model="selectedCateg">
                                 <option value="aucun">-</option>
                                 <option value="adults">Adultes</option>
                                 <option value="kids">Enfants</option>
@@ -25,12 +26,12 @@
                     </div>
 
                     <!--MODEL-->
-                    <div class="select-wrap">
-                        <label for="category-wrap">Catégorie</label>
+                    <div class="select-wrap col-7" v-show="selectedCateg !== 'aucun'">
+                        <label for="category-wrap">Nom</label>
                         <div id="">
-                            <select id="product" class="wrapper" >
+                            <select id="product" class="wrapper" v-model="selectedProd">
                                 <option value="aucun">-</option>
-                                <option v-for="(product, index) in products" :key="index" :value="product.nickname" v-show="product.category === category[0]">{{product.name}}</option>
+                                <option v-for="(product, index) in products" :key="index" :value="product.nickname" v-show="product.category === selectedCateg">{{product.name}}</option>
                             </select>
                         </div>
                     </div>
@@ -56,40 +57,23 @@ export default {
         HeaderPage,
         store
     },
-    props: {
-    },
     data() {
         return {
             products: [],
-            select: [],
-            category: [],
-            name: [],
-            selected: []
+            selectedCateg: "",
+            selectedProd: ""
         }
     },
     created () {
         this.products = store.state.products
-        this.select = store.state.select
-        this.category = store.state.category
-        this.selected = this.category
-        this.selectOptionCateg()
-        this.selectOptionProd()
+        this.selectedCateg = store.state.category[0]
+        this.selectedProd = store.state.name
     },
-    methods: {
-        selectOptionCateg() {
-            setTimeout(function () {
-                $('#category option[class="selected"]').prop('selected', false)
-                $('#category option[value='+ store.state.category[0] +']').prop('selected', true)
-            }
-            ,1000)
-        },
-        selectOptionProd() {
-            setTimeout(function () {
-                $('#product option[class="selected"]').prop('selected', false)
-                $('#product option[value='+ store.state.name +']').prop('selected', true)
-            }
-            ,1000)
-        }
+    updated () {
+        if (store.state.category !== this.selectedCateg)
+            this.selectedProd = "aucun"
+        store.state.category = this.selectedCateg
+        store.state.name = this.selectedProd
     }
 };
 

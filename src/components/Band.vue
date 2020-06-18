@@ -1,8 +1,8 @@
 <template>
-  <div :style="{background:'url(' + content.background + ')'}" class="background col-md-2 band">
+  <div :style="{background:'url(' + content.background + ')'}" class="background col-md-2 band cache">
     <router-link :to="{ path: content.direction}" class="band-close" tag="div">
       <!--<p class="close-icon vcenter">X</p>-->
-      <p class="fas fa-arrow-left vcenter"></p>
+      <p class="fas fa-arrow-left vcenter" v-on:click="animOut()"></p>
     </router-link>
     <div class="d-flex justify-content-center text-center vcenter band-title">
       <h1 class="text-center">
@@ -13,6 +13,8 @@
 </template>
 
 <script>
+var $ = require('jquery');
+
 
 export default {
   mode: 'history',
@@ -52,17 +54,73 @@ export default {
       }
     }
   },
-  mounted() {
-
+  mounted() {    
     var route = this._routerRoot._route.name;
     this.content = this.bandData[route];
-
+    this.animIn()
+  },
+  methods: {
+    animIn: function () {
+        setTimeout(function () {
+            $('.cache').addClass('slide-band')
+            $('.slide-band').removeClass('cache')},
+            500
+        )
+    },    
+    animOut: function () {
+            $('.slide-band').addClass('cache')
+            $('.cache').removeClass('slide-band')
+    }
   }
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+/* SLIDE BAND */
+.slide-band {
+    transition: transform 0.7s, opacity 0.75s;
+    opacity:1;
+    transform: translateX(0%);
+}
+.cache{
+    transition: transform 0.4s, opacity 0.5s;
+    opacity:0; 
+    transform: translateX(100%);
+}
+
+/*
+
+
+.slide-band-active {
+  transition: all 1.8s ease;
+}
+.slide-band-enter-to,
+.slide-band-leave {
+  transform: translateX(-100%);
+  opacity: 0.5;
+}
+.slide-band-enter,
+.slide-band-leave-to {
+  position: absolute;
+  transform: translateX(0);
+  opacity:0.5;
+}
+
+@media (max-width: 767.98px) {
+  .slide-band-enter-to,
+  .slide-band-leave {
+    transform: translateY(0%);
+    opacity: 0.5;
+  }
+  .slide-band-enter,
+  .slide-band-leave-to {
+    position: absolute;
+    transform: translateY(0);
+    opacity: 0.5;
+  }
+}*/
+
 .background {
   background-repeat: repeat;
   background-size: 300px !important;
@@ -77,7 +135,6 @@ export default {
 }
 
 .band {
-  position: fixed;
   right: 0;
   background-color: aqua;
   height: 100%;

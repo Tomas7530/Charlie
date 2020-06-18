@@ -1,6 +1,6 @@
 <template>
     <div class="container-fluid h-100">
-        <div class="row h-100">
+        <div id="bc" class="row h-100 ">
 
             <div class="col-12 col-md-10 scroll-page">
                 <div class="row d-flex justify-content-center">
@@ -49,6 +49,7 @@
 
 <script>
 // @ is an alias to /src
+import App from "@/App.vue";
 import Band from "@/components/Band.vue";
 import HeaderPage from "@/components/HeaderPage.vue";
 import FlipCard from "@/components/FlipCard.vue";
@@ -60,6 +61,7 @@ import store from "../store";
 export default {
     name: "creation",
     components: {
+        App,
         Band,
         HeaderPage,
         FlipCard,
@@ -76,25 +78,37 @@ export default {
             cards: [
                 {
                     category: "kids",
-                    name: "Enfants"
+                    name: "Enfants",
+                    title: "cliquez pour voir les produits",
+                    text: "zdko zedokn egrg epkznnzd zfjnonbap ozknedonz g zkoefokzn mpooaz",
+                    image: "logo-kids.jpg",
+                    color: "vert"
                 }, {
                     category: "adults",
                     name: "Adultes",
                     title: "cliquez pour voir les produits",
-                    text: "zdko zedokn egrg epkznnzd zfjnonbap ozknedonz g zkoefokzn mpooaz"
+                    text: "zdko zedokn egrg epkznnzd zfjnonbap ozknedonz g zkoefokzn mpooaz",
+                    image: "logo-adults.jpg",
+                    color: "bleu"
                 }, {
                     category: "plush",
-                    name: "Peluches"
+                    name: "Peluches",
+                    title: "cliquez pour voir les produits",
+                    text: "zdko zedokn egrg epkznnzd zfjnonbap ozknedonz g zkoefokzn mpooaz",
+                    image: "logo-plush.jpg",
+                    color: "rose"
                 }, {
                     category: "others",
-                    name: "Accessoires"
+                    name: "Accessoires",
+                    title: "cliquez pour voir les produits",
+                    text: "zdko zedokn egrg epkznnzd zfjnonbap ozknedonz g zkoefokzn mpooaz",
+                    image: "logo-others.jpg",
+                    color: "marron"
                 }]
         }
     },
     created() {
         this.products = store.state.products
-        //ProductsList.$data.products
-        /* Pour modif : panierProductCopy = JSON.parse(JSON.stringify(product)) */
     },
     methods: {
         mouseEnterCard: function (event) {
@@ -135,13 +149,15 @@ export default {
             this.opened = null;
             card.open = false;
         }
+    },
+    destroyed() {
+        store.state.backgroundSize = ""
     }
 };
 
 </script>
 
 <style>
-
 .section {
   position: absolute !important;
   height: auto !important;

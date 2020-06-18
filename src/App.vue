@@ -15,12 +15,13 @@
 </template>
 
 <script>
+import Creation from "@/views/Creation.vue";
 import store from './store';
 
 export default {
-
-	created() {
-		this.products = store.state.products
+    components: {
+        store,
+        Creation
     }
 
 }
@@ -84,7 +85,7 @@ html {
 
 /* ANIMATION */
 
-/* SLIDE LEFT */
+/* SLIDE NAV */
 .slide-left-enter-active,
 .slide-right-enter-active {
   transition: all 0.8s ease;

@@ -7,9 +7,9 @@
           <h5 class="card-title">Créations {{cardData.name}}</h5>
         </div>
 
-        <div class="back" style="background:#f8f8f8;">
+        <div class="back">
           <div class="back-card" :class="cardData.category" :value="cardData.category">
-            <div class="logo" value="child"><img :alt="'logo-'+ cardData.category" :src="'/images/cards/card-' + cardData.category+ '.jpg'" /></div>
+            <div class="logo" value="child"><img :src="'../' +cardData.image" :alt="'logo-'+ cardData.category" /></div>
             <div class="title" value="child">{{cardData.title}}</div>
             <p value="child">{{cardData.text}}</p>
           </div>
@@ -27,15 +27,15 @@ import ProductsList from "../ProductsList";
 
 export default {
   name: "flipcard",
+  components: {
+    Products
+  },
   store: ProductsList,
   props: {
     cardData: {
       type: Object,
       default: function () { return {} }
     }
-  },
-  components: {
-    Products
   }
 };
 </script>
@@ -100,15 +100,13 @@ export default {
 }
 
 .front {
-  background: rgb(70, 70, 80);
+    background-color: burlywood;
   z-index: 2;
 }
 
 .front .card-title {
   font-size: 2em;
-  display: inline-block;
-  background: rgba(33, 33, 33, 0.9);
-  color: #f8f8f8;
+  display: inline-block; 
   padding: 5px 10px;
   border-radius: 4px;
   bottom: 25%;

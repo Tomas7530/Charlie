@@ -244,8 +244,8 @@ let store = new Vuex.Store({
     state: {
         products: products, 
         select: [],
-        category: ["aucun"],
-        name: ["aucun"]
+        category: ["aucun",""],
+        name: "aucun"
     },
     mutations: {
         getProduct (){
@@ -256,10 +256,10 @@ let store = new Vuex.Store({
             
             for(const product in products) {
                 if(products[product].nickname === name){
-                select.pop()
-                select.push(products[product])
-                categ.pop()
-                categ.push(products[product].category)
+                select.shift()
+                select.unshift(products[product])
+                categ.shift()
+                categ.unshift(products[product].category)
                 }
             }
             return
