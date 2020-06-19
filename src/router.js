@@ -14,37 +14,37 @@ export default new Router({
   mode: 'history',
   routes: [
     {
-      path: "/",
-      name: "home",
-      components: {
-        title: Home,
-        nav: Nav
-      }
+        path      : "/",
+        name      : "home",
+        components: {            
+            nav  : Nav,
+            title: Home
+        }
     },
     {
-      path: "/intro",
-      name: "intro",
-      component: Intro
+        path     : "/intro",
+        name     : "intro",
+        component: Intro
     },
     {
-      path: "/creation",
-      name: "creation",
-      component: Creation
+        path     : "/creation",
+        name     : "creation",
+        component: Creation
     },
     {
-      path: "/order",
-      name: "order",
-      component: Order
+        path     : "/order",
+        name     : "order",
+        component: Order
     },
     {
-      path: "/contact",
-      name: "contact",
-      component: Contact
+        path     : "/contact",
+        name     : "contact",
+        component: Contact
     },
     {
-      path: "/custom",
-      name: "custom",
-      component: Custom
+        path     : "/custom",
+        name     : "custom",
+        component: Custom
     }
   ]
 });

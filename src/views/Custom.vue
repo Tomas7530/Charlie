@@ -1,43 +1,85 @@
 <template>
-    <div class="header-page container-fluid h-100">
-        <div class="row h-100">
-            <div class="col-12 col-md-10">
-                <!--
-                <div class="row d-flex justify-content-center">
-                    <HeaderPage />
-                </div>
-                -->
+    <div   class ="header-page container-fluid h-100">
+        <div   class ="row h-100">
+            <div   class ="col-12 col-md-10">
+                <div   class ="row d-flex justify-content-center">
 
-                <div class="row d-flex justify-content-center">
-                    <p class="col-12">{{selectedCateg}} {{selectedProd}}</p>
+                    <p   class ="col-12">
+                        {{ selectedCateg }}
+                        {{ selectedProd }}
+                    </p>
 
                     <!--CATEGORY-->
-                    <div class="select-wrap col-7">
-                        <label for="category-wrap">Catégorie</label>
-                        <div id="sel-categ">
-                            <select id="category" class="wrapper category" v-model="selectedCateg">
-                                <option value="aucun">-</option>
-                                <option value="adults">Adultes</option>
-                                <option value="kids">Enfants</option>
-                                <option value="plush">Peluches</option>
-                                <option value="others">Accessoires</option>
+                    <div  class ="select-wrap col-7">
+                        
+                        <label   for ="category-wrap">
+                            Catégorie
+                        </label>
+
+                        <div   id ="sel-categ">
+
+                            <select   v-model ="selectedCateg"
+                                        class ="wrapper category" 
+                                           id ="category" >
+
+                                <option    value ="aucun">
+                                    -
+                                </option>
+                                
+                                <option   value ="adults">
+                                    Adultes
+                                </option>
+
+                                <option   value ="kids">
+                                    Enfants
+                                </option>
+
+                                <option   value ="plush">
+                                    Peluches
+                                </option>
+
+                                <option   value ="others">
+                                    Accessoires
+                                </option>
+
                             </select>
                         </div>
                     </div>
 
                     <!--MODEL-->
-                    <div class="select-wrap col-7" v-show="selectedCateg !== 'aucun'">
-                        <label for="category-wrap">Nom</label>
-                        <div id="">
-                            <select id="product" class="wrapper" v-model="selectedProd">
-                                <option value="aucun">-</option>
-                                <option v-for="(product, index) in products" :key="index" :value="product.nickname" v-show="product.category === selectedCateg">{{product.name}}</option>
+                    <div   v-show ="selectedCateg !== 'aucun'"
+                            class ="select-wrap col-7" >
+
+                        <label   for ="category-wrap">
+                            Nom
+                        </label>
+
+                        <div   id="">
+
+                            <select   v-model ="selectedProd"
+                                        class ="wrapper"
+                                           id ="product" >
+
+                                <option   value ="aucun">
+                                    -
+                                </option>
+
+                                <option   v-show ="product.category === selectedCateg"
+                                          :value ="product.nickname"
+                                           v-for ="(product, index) in products" 
+                                            :key = "index" >
+
+                                    {{ product.name }}
+                                </option>
+
                             </select>
                         </div>
                     </div>
                 </div>
             </div>
+
             <Band />
+
         </div>
     </div>
 </template>
@@ -76,9 +118,4 @@ export default {
         store.state.name = this.selectedProd
     }
 };
-
-
 </script>
-
-<style>
-</style>

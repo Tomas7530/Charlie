@@ -1,36 +1,68 @@
 <template>
-    <div class="container-fluid h-100">
-        <div id="bc" class="row h-100 ">
+    <div   class ="container-fluid h-100">
+        <div   class ="row h-100 "
+                  id ="bc" >
 
-            <div class="col-12 col-md-10 scroll-page">
-                <div class="row d-flex justify-content-center">
+            <div   class ="col-12 col-md-10 scroll-page">
+                <div   class ="row d-flex justify-content-center">
 
-                    <HeaderPage class="header-page" v-if="!opened" />
-                    <p></p>
+                    <HeaderPage   class ="header-page" 
+                                   v-if ="!opened" />
 
                     <!-- Flip card -->
-                    <div class="col-12">
-                        <div class="row d-flex justify-content-around">
-                            <div v-on:mouseenter="mouseEnterCard($event)" v-on:mouseleave="mouseLeaveCard()" v-on:click="goToProducts(card)" v-for="(card, index) in cards" :key="index" :value="card.category" v-if="!opened">
-                                <FlipCard class="flip-card row" v-bind:cardData="card" />
+                    <div   class ="col-12">
+                        <div   class ="row d-flex justify-content-around">
+
+                            <div   v-on:mouseenter ="mouseEnterCard($event)"
+                                   v-on:mouseleave ="mouseLeaveCard()" 
+                                        v-on:click ="goToProducts(card)" 
+                                             v-for ="(card, index) in cards" 
+                                              :key ="index" :value="card.category" 
+                                              v-if ="!opened">
+
+                                <FlipCard   v-bind:cardData ="card"
+                                                      class ="flip-card row"  />
+
                             </div>
                         </div>
                     </div>
 
                     <!-- Products -->
-                    <div class="col-12">
-                        <div class="row d-flex justify-content-around">
+                    <div   class ="col-12">
+                        <div   class ="row d-flex justify-content-around">
 
-                            <transition name="zoom-fade">
-                                <div class="section" v-for="(card, index) in cards" :key="index" :value="card.category" v-if="card.open">
-                                    <div class="product-card text-center" style="background:#11ffee00;">
-                                        <div class="card-close" v-on:click="closeCard(card)">
-                                            <p class="fas fa-arrow-left vcenter"></p>
+                            <transition   name ="zoom-fade">
+                                <div   class ="section" 
+                                       v-for ="(card, index) in cards" 
+                                        :key ="index" :value="card.category" 
+                                        v-if ="card.open" >
+
+                                    <div   class ="product-card text-center" 
+                                           style ="background:#11ffee00;" >
+
+                                        <div   v-on:click ="closeCard(card)"
+                                                    class ="card-close"  >
+
+                                            <p   class ="fas fa-arrow-left vcenter"></p>
                                         </div>
-                                        <h1 class="product-title">{{card.name}}</h1>
-                                        <h3>les créations :</h3>
-                                        <div class="row d-flex justify-content-center" v-on:mouseenter="mouseEnterProd($event)">
-                                            <Products class="col-lg-5" v-for="(product, index) in products" :key="index" v-if="card.category == product.category" v-bind:product="product" />
+
+                                        <h1   class ="product-title">
+                                            {{ card.name }}
+                                        </h1>
+
+                                        <h3>
+                                            les créations :
+                                        </h3>
+
+                                        <div   v-on:mouseenter ="mouseEnterProd($event)"
+                                                         class ="row d-flex justify-content-center" >
+                                            
+                                            <Products   v-bind:product ="product"
+                                                                 class ="col-lg-5" 
+                                                                 v-for ="(product, index) in products" 
+                                                                  :key ="index" 
+                                                                  v-if ="card.category == product.category" />
+                                        
                                         </div>
                                     </div>
                                 </div>

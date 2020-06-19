@@ -1,13 +1,18 @@
 <template>
-	<div class="container-fluid h-100">
-		<div class="row h-100">
-			<div class="col-12 col-md-10">
-				<div class="row d-flex justify-content-center">
+	<div   class ="container-fluid h-100">
+		<div   class ="row h-100">
+			<div   class ="col-12 col-md-10">
+
+				<div  class ="row d-flex justify-content-center">
+
 					<HeaderPage />
+
 				</div>
 			</div>
+
 			<Band />
-		</div>
+		
+        </div>
 	</div>
 </template>
 
@@ -15,21 +20,13 @@
 // @ is an alias to /src
 import Band from "@/components/Band.vue";
 import HeaderPage from "@/components/HeaderPage.vue";
-import Credits from "@/components/Credits.vue";
 
 export default {
-	name: "intro",
+	name      : "intro",
 	components: {
 		Band,
-		HeaderPage,
-		Credits
-	}/* ,
-  props: {
-    pageData: {
-      type: Object,
-      default: function () { return {} }
-    }
-  } */
+		HeaderPage
+	}
 };
 </script>
 
