@@ -43,7 +43,7 @@ export default {
           title     : "Créations",
           direction : "/"
         },
-        order       : {
+        basket       : {
           background: "/images/order-band.jpg",
           title     : "Panier",
           direction : "/"

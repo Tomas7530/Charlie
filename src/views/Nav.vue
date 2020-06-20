@@ -35,8 +35,8 @@
 
 		<div   class ="row h-50">
 
-			<router-link   class ="order link col-6" 
-                              to ="/order" 
+			<router-link   class ="basket link col-6" 
+                              to ="/basket" 
                              tag ="div" >
 
 				<div   class ="text-center vcenter">
@@ -80,8 +80,8 @@
   background-image: url("/images/creation-band.jpg");
 }
 
-.order {
-  background-image: url("/images/order-band.jpg");
+.basket {
+  background-image: url("/images/basket-band.jpg");
 }
 
 .contact {

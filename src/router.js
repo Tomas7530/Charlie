@@ -4,7 +4,7 @@ import Home from "./views/Home.vue";
 import Nav from "./views/Nav.vue";
 import Intro from "./views/Intro.vue";
 import Creation from "./views/Creation.vue";
-import Order from "./views/Order.vue";
+import Basket from "./views/Basket.vue";
 import Contact from "./views/Contact.vue";
 import Custom from "./views/Custom.vue";
 
@@ -32,9 +32,9 @@ export default new Router({
         component: Creation
     },
     {
-        path     : "/order",
-        name     : "order",
-        component: Order
+        path     : "/basket",
+        name     : "basket",
+        component: Basket
     },
     {
         path     : "/contact",

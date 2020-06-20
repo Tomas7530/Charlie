@@ -31,7 +31,7 @@ export default {
 				creation   : {
 					text      : "<h1>Categories: </h1>"
 				},
-				order      : {
+				basket      : {
 					image     : "header.jpg",
 					title     : "Panier",
 					text      : "Lorem ipsum dolor sit amet,<strong>consectetur adipiscing elit</strong><em>Morbi commodo sodales nisi id sodales. Proin consectetur, nisi id commodo imperdiet, metus nunc consequat lectus, id bibendum diam velit et dui.</em><small>Aliquam mi erat, aliquam vel luctus eu, pharetra quis elit. Nulla euismod ult</small>"

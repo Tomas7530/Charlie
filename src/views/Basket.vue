@@ -21,7 +21,7 @@
     import HeaderPage from "@/components/HeaderPage.vue";
 
     export default {
-        name      : "creation",
+        name      : "panier",
         components: {
             Band,
             HeaderPage
