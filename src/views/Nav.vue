@@ -183,7 +183,7 @@
     font-size     : 2.2rem;
   }
 
-  .link           : hover .nav-title {
+  .link:hover .nav-title {
     font-size     : 2.4rem !important;
   }
 
@@ -194,7 +194,7 @@
     width         : 60px;
   }
 
-  .link           : hover .nav-icon {
+  .link:hover .nav-icon {
     font-size     : 33px !important;
     height        : 60px;
     line-height   : 60px;

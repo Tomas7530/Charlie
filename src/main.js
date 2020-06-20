@@ -14,6 +14,3 @@ window.vue = new Vue({
     store,
     render: h => h(App)
 }).$mount("#app");
-
-
-exports.mail = require('./mailController.js')

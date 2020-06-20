@@ -34,8 +34,12 @@ export default {
     components: {
         store,
         Creation
+    },
+    mounted() {
+        function initi() {
+            emailjs.init("user_pdCHYvlVdWV6B7vM1zSsx");
+        }
     }
-
 }
 </script>
 
