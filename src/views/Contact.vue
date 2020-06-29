@@ -6,11 +6,11 @@
 
                     <HeaderPage />
 
-                    <!-- Form Contact -->
-                    <form   @submit.prevent="sendEmail"
-                                     class ="col-10 text-center contact-form" 
-                                      role ="form"
-                                        id ="contact-form" >
+                    <!-- Form Contact @submit.prevent="sendEmail"
+                                     -->
+                    <form   class ="col-10 text-center contact-form" 
+                             role ="form"
+                               id ="contact-form" >
 
                         <div   class ="row">
 
@@ -58,7 +58,8 @@
                             </div>
                         </div>
 
-                        <input   class ="btn btn-primary"
+                        <input   @click="valid()"
+                                 class ="btn btn-primary"
                                   type ="submit"
                                   value ="Send" >
                     </form>
@@ -99,17 +100,7 @@ export default {
         emailjs.init('CharliesCrea');
     },
     methods   : {
-        sendEmail: (e) => {
-      emailjs.sendForm('default_service', 'template_NSDuCcSJ', e.target, 'user_pdCHYvlVdWV6B7vM1zSsx')
-        .then((result) => {
-            console.log('SUCCESS!', result.status, result.text);
-        }, (error) => {
-            console.log('FAILED...', error);
-        });
-    }
-            /*emailjs.init('YOUR_USER_ID');
-            emailjs.sendForm('contact_service', 'contact_form', this);
-            /$('#valid_order').click(function () {
+        /*valid: function () {
             var cart    = "liste"//getCart();
             var total   = "total"//getTotal();
             var name    = "fabre"//$('#name').val();
@@ -117,7 +108,7 @@ export default {
             var message = "Hello Thomas"//$('#message').val();
             console.log(cart);
 
-/*             if (!name) {
+            if (!name) {
                 alert('Vous avez oublié de renseigner votre nom !');
                 return;
             }
@@ -127,49 +118,24 @@ export default {
             }
             if (!message) {
                 var message = name + " n'a pas ajouté de message";
-            } 
+            }
 
-            $.post('https://api.emailjs.com/api/v1.0/email/send', {
-                name   : name,
-                email  : email,
+            $.post("/api/send_mail", {
+                name: name,
+                email: email,
                 message: message,
-                cart   : cart,
-                total  : total
+                cart: cart,
+                total: total
             }, function (data, status) {
-                    console.log(data, status);
-                    //clearCart();
-                    //refreshTable();
-                    alert("Votre commande à bien été envoyée !");
+                console.log(data, status);
+                alert("Votre commande à bien été envoyée !");
             }).fail(function (error, a, b, c) {
-                    console.log(error, a, b, c);
-                    alert('une erreur est survenu veuillez reesayer');
+                console.log(error, a, b, c);
+                alert('une erreur est survenu veuillez reesayer');
             })
-            var data = {
-                service_id: 'default_service',
-                template_id: 'YOUR_TEMPLATE_ID',
-                user_id: 'YOUR_USER_ID',
-                template_params: {
-                    'username': 'James',
-                    'g-recaptcha-response': '03AHJ_ASjnLA214KSNKFJAK12sfKASfehbmfd...'
-                }
-            };
-
-                name   : name,
-                email  : email,
-                message: message,
-                cart   : cart,
-                total  : total
-            $.ajax('https://api.emailjs.com/api/v1.0/email/send', {
-                type: 'POST',
-                data: JSON.stringify(data),
-                contentType: 'application/json'
-            }).done(function() {
-                alert('Your mail is sent!');
-            }).fail(function(error) {
-                alert('Oops... ' + JSON.stringify(error));
-            });*/
+        }*/
     }
-};
+}
 </script>
 
 <style scoped>

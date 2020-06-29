@@ -36,9 +36,9 @@ export default {
         Creation
     },
     mounted() {
-        function initi() {
+        /*function initi() {
             emailjs.init("user_pdCHYvlVdWV6B7vM1zSsx");
-        }
+        }*/
     }
 }
 </script>
