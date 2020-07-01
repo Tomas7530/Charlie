@@ -7,12 +7,18 @@ import Creation from "./views/Creation.vue";
 import Basket from "./views/Basket.vue";
 import Contact from "./views/Contact.vue";
 import Custom from "./views/Custom.vue";
+import Email from "./views/Email.vue";
 
 Vue.use(Router);
 
 export default new Router({
   mode  : 'history',
   routes: [
+    {
+        path      : "/api/send_mail",
+        name      : "email",
+        components: Email
+    },
     {
         path      : "/",
         name      : "home",

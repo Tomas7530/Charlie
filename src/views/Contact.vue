@@ -100,7 +100,7 @@ export default {
         emailjs.init('CharliesCrea');
     },
     methods   : {
-        /*valid: function () {
+        valid: function () {
             var cart    = "liste"//getCart();
             var total   = "total"//getTotal();
             var name    = "fabre"//$('#name').val();
@@ -133,7 +133,7 @@ export default {
                 console.log(error, a, b, c);
                 alert('une erreur est survenu veuillez reesayer');
             })
-        }*/
+        }
     }
 }
 </script>

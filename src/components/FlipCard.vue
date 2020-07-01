@@ -17,7 +17,7 @@
                           :value ="cardData.category">
 
                         <div   class ="logo" value="child">
-                            <img   src ="'../assets/logo.png'" 
+                            <img  :src ="'../images/'+cardData.image" 
                                   :alt ="'logo-'+ cardData.category" />
                         </div>
 
