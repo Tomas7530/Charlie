@@ -1,14 +1,14 @@
 'use strict'
 
-const ejs        = require('ejs')
-const nodemailer = require('nodemailer')
+import ejs from 'ejs'
+import nodemailer from 'nodemailer'
 var transporter  = null
 
 export default {
     data() {
         return {
             send : function () {
-                async function (req, res) {
+                async function sending (req, res) {
                     if (!req.body.email || !req.body.name || !req.body.message || !req.body.cart) {
                         return res.status(401).send({
                             message: "missing_body"

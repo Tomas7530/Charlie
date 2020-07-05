@@ -49,7 +49,7 @@ export default {
           direction : "/"
         },
         custom      : {
-          background: "/images/order-band.jpg",
+          background: "/images/custom-band.jpg",
           title     : "Personnaliser",
           direction : "/"
         },

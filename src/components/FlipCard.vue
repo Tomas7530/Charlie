@@ -1,9 +1,11 @@
 <template>
     <div   class ="col-md-4 col-sm-12">
         <div   class ="flip-container" 
-              :class ="cardData.category" >
+              :class ="cardData.category+'-pos'" >
 
-            <div   class ="flipper">
+            <div   class ="flipper hexagon">
+                <div class="hexagon-in1">
+                <div class="hexagon-in2">
 
                 <div   class ="front">
                     <h5   class ="card-title">
@@ -17,7 +19,7 @@
                           :value ="cardData.category">
 
                         <div   class ="logo" value="child">
-                            <img  :src ="'../images/'+cardData.image" 
+                            <img  :src ="'../images/cards/'+cardData.image" 
                                   :alt ="'logo-'+ cardData.category" />
                         </div>
 
@@ -28,8 +30,11 @@
 
                         <p   value ="child">
                             {{ cardData.text }}
-                        </p>
+                        </p> 
                     </div>
+                </div>
+
+                </div>
                 </div>
             </div>
         </div>
@@ -46,16 +51,25 @@ export default {
     Products
   },
   props      : {
+    category : '',
     cardData : {
       type   : Object,
       default: function () { return {} }
     }
+  },
+  mounted() {
+
+  },
+  methods : {
+      overCard () {
+          
+      }
   }
 };
 </script>
 
 <style scoped>
-.flip-container.active,
+/* .flip-container.active,
 .flip-container.active .back {
   transition         : all 0.5s ease;
   width              : 70vw !important;
@@ -80,15 +94,6 @@ export default {
   cursor             : pointer;
 }
 
-.flip-container,
-.front,
-.back {
-  transition         : all 0.5s ease;
-  min-width          : 250px;
-  width              : 18vw;
-  height             : 350px;
-}
-
 .flip-container {
   transition         : all 0.5s ease;
   transform          : perspective(1500px);
@@ -99,6 +104,38 @@ export default {
   transition         : 0.6s;
   transform-style    : preserve-3d;
   position           : relative;
+} */
+
+
+.flip-container:before{
+    content: " ";
+    width: 0; height: 0;
+    border-bottom: 50px solid rgb(150, 150, 150);
+    border-left: 100px solid transparent;
+    border-right: 100px solid transparent;
+    position: absolute;
+    top: -50px;
+}
+
+.flip-container:after {
+    content: "";
+    width: 0;
+    position: absolute;
+    bottom: -99px;
+    border-top: 50px solid rgb(150, 150, 150);
+    border-left: 100px solid transparent;
+    border-right: 100px solid transparent;
+}
+
+.flip-container,
+.front,
+.back {
+    transition         : all 0.5s ease;
+    margin-top: 50px;
+    width: 200px;
+    height: 60px;
+    background-color: rgb(150, 150, 150);
+    position: absolute;
 }
 
 .front,
@@ -107,15 +144,12 @@ export default {
   transition         : 0.6s;
   transform-style    : preserve-3d;
   transform          : rotateY(0deg);
-  position           : absolute;
   top                : 0;
   left               : 0;
-  border-radius      : 7px;
 }
 
 .front {
-    background-color : burlywood;
-  z-index            : 2;
+    z-index            : 2;
 }
 
 .front .card-title {
@@ -123,11 +157,12 @@ export default {
   display            : inline-block; 
   padding            : 5px 10px;
   border-radius      : 4px;
-  bottom             : 25%;
-  left               : 7%;
-  position           : absolute;
+  bottom             : 30px;
+  left               : 5px;
+  position           : relative;
+  color: rgb(241, 241, 241);
   text-shadow        : 0.1em 0.1em 0.05em #333;
-  transform          : rotate(-20deg);
+  /* transform          : rotate(-20deg); */
   width              : 15%;
 }
 

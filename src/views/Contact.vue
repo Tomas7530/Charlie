@@ -61,7 +61,9 @@
                         <input   @click="valid()"
                                  class ="btn btn-primary"
                                   type ="submit"
-                                  value ="Send" >
+                                  value ="Send"
+                                  method='POST'
+                                  action="send" >
                     </form>
 
                     <Credits />
@@ -80,8 +82,8 @@
 import Band from "@/components/Band.vue";
 import HeaderPage from "@/components/HeaderPage.vue";
 import Credits from "@/components/Credits.vue";
-import emailjs from "emailjs-com";
-var $ = require('jquery');
+import Router from "../router";
+import $ from 'jquery';
 
 export default {
     name      : "creation",
@@ -93,11 +95,6 @@ export default {
     Create() {
     },
     mounted() {
-        let recaptchaScript = document.createElement('script')
-        recaptchaScript.setAttribute('src', 'https://cdn.jsdelivr.net/npm/emailjs-com@2.4.1/dist/email.min.js')
-        document.head.appendChild(recaptchaScript)
-            
-        emailjs.init('CharliesCrea');
     },
     methods   : {
         valid: function () {
@@ -109,15 +106,15 @@ export default {
             console.log(cart);
 
             if (!name) {
-                alert('Vous avez oublié de renseigner votre nom !');
+                alert('Vous avez oublié de renseigner votre nom !')
                 return;
             }
             if (!email) {
-                alert('Vous avez oublié de renseigner votre adresse mail !');
+                alert('Vous avez oublié de renseigner votre adresse mail !')
                 return;
             }
             if (!message) {
-                var message = name + " n'a pas ajouté de message";
+                var message = name + " n'a pas ajouté de message"
             }
 
             $.post("/api/send_mail", {

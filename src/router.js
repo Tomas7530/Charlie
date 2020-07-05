@@ -17,7 +17,8 @@ export default new Router({
     {
         path      : "/api/send_mail",
         name      : "email",
-        components: Email
+        components: Email,
+        methods: 'POST'
     },
     {
         path      : "/",
